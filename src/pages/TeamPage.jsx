@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getStandings, getTeamSquad, getFixtures, getInjuries } from '../services/api';
 import SquadList from '../components/SquadList';
 import MatchList from '../components/MatchList';
+import StaffInfo from '../components/StaffInfo';
 import WeatherWidget from '../components/WeatherWidget';
 import stadiums from '../data/stadiums';
 import { IoArrowBack } from 'react-icons/io5';
@@ -126,6 +127,12 @@ export default function TeamPage() {
 
       <div className="team-tabs">
         <button
+          className={activeTab === 'staff' ? 'active' : ''}
+          onClick={() => setActiveTab('staff')}
+        >
+          Manager
+        </button>
+        <button
           className={activeTab === 'squad' ? 'active' : ''}
           onClick={() => setActiveTab('squad')}
         >
@@ -140,6 +147,9 @@ export default function TeamPage() {
       </div>
 
       <div className="team-tab-content card">
+        {activeTab === 'staff' && (
+          <StaffInfo teamId={id} />
+        )}
         {activeTab === 'squad' && (
           <SquadList players={squad} injuries={injuries} />
         )}

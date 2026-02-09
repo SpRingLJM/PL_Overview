@@ -17,6 +17,12 @@ export default function Layout() {
             <NavLink to="/stats" className={({ isActive }) => isActive ? 'active' : ''}>
               Stats
             </NavLink>
+            <NavLink to="/injuries" className={({ isActive }) => isActive ? 'active' : ''}>
+              Injuries
+            </NavLink>
+            <NavLink to="/transfers" className={({ isActive }) => isActive ? 'active' : ''}>
+              Transfers
+            </NavLink>
             <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>
               About
             </NavLink>

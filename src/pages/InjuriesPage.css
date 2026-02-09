@@ -1,0 +1,152 @@
+.injuries-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Filter */
+.injury-filter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.filter-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.filter-select {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  min-width: 220px;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--pl-cyan);
+}
+
+/* Grid */
+.injury-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--space-md);
+}
+
+/* Team Card */
+.injury-team-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.injury-team-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.injury-team-header:hover {
+  background: var(--bg-card-hover);
+}
+
+.injury-team-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.injury-team-header h3 {
+  flex: 1;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+
+.injury-count {
+  background: rgba(255, 40, 130, 0.15);
+  color: var(--pl-magenta);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+/* Player List */
+.injury-player-list {
+  padding: var(--space-sm);
+}
+
+.injury-player-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.injury-player-row:hover {
+  background: var(--bg-card-hover);
+}
+
+.injury-player-photo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--pl-magenta);
+  flex-shrink: 0;
+}
+
+.injury-player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.injury-player-name {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.injury-reason {
+  font-size: var(--font-size-xs);
+  color: var(--pl-magenta);
+}
+
+.injury-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.injury-type-badge.missing {
+  background: rgba(255, 40, 130, 0.15);
+  color: var(--pl-magenta);
+}
+
+.injury-type-badge.questionable {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--status-doubtful);
+}
+
+@media (max-width: 768px) {
+  .injury-grid {
+    grid-template-columns: 1fr;
+  }
+}
