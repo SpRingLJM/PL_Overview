@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './StandingsTable.css';
 
 export default function StandingsTable({ standings }) {
+  const { t } = useTranslation();
+
   if (!standings || standings.length === 0) return null;
 
   const getFormIcon = (char) => {
@@ -14,17 +17,17 @@ export default function StandingsTable({ standings }) {
       <table className="standings-table">
         <thead>
           <tr>
-            <th className="col-pos">#</th>
-            <th className="col-team">Team</th>
-            <th>MP</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GF</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th className="col-pts">PTS</th>
-            <th className="col-form">Form</th>
+            <th className="col-pos">{t('standings.pos')}</th>
+            <th className="col-team">{t('standings.team')}</th>
+            <th>{t('standings.mp')}</th>
+            <th>{t('standings.w')}</th>
+            <th>{t('standings.d')}</th>
+            <th>{t('standings.l')}</th>
+            <th>{t('standings.gf')}</th>
+            <th>{t('standings.ga')}</th>
+            <th>{t('standings.gd')}</th>
+            <th className="col-pts">{t('standings.pts')}</th>
+            <th className="col-form">{t('standings.form')}</th>
           </tr>
         </thead>
         <tbody>
@@ -62,9 +65,9 @@ export default function StandingsTable({ standings }) {
         </tbody>
       </table>
       <div className="standings-legend">
-        <span className="legend-item"><span className="legend-dot ucl"></span> Champions League</span>
-        <span className="legend-item"><span className="legend-dot uel"></span> Europa League</span>
-        <span className="legend-item"><span className="legend-dot rel"></span> Relegation</span>
+        <span className="legend-item"><span className="legend-dot ucl"></span> {t('standings.championsLeague')}</span>
+        <span className="legend-item"><span className="legend-dot uel"></span> {t('standings.europaLeague')}</span>
+        <span className="legend-item"><span className="legend-dot rel"></span> {t('standings.relegation')}</span>
       </div>
     </div>
   );

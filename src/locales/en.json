@@ -1,0 +1,158 @@
+{
+  "header": {
+    "titlePre": "The Overview of",
+    "titleHighlight": "Premier League"
+  },
+  "nav": {
+    "standings": "Standings",
+    "stats": "Stats",
+    "injuries": "Injuries",
+    "transfers": "Transfers",
+    "about": "About"
+  },
+  "footer": "The Overview of Premier League \u00a9 2026 | Data provided by API-Football & OpenWeatherMap",
+  "common": {
+    "loading": "Loading...",
+    "error": "Error: {{message}}",
+    "noData": "No data available"
+  },
+  "home": {
+    "title": "Premier League Standings",
+    "loading": "Loading standings...",
+    "table": "Table",
+    "cards": "Cards",
+    "serverTime": "Server Time",
+    "upcomingMatches": "Upcoming Matches"
+  },
+  "standings": {
+    "pos": "#",
+    "team": "Team",
+    "mp": "MP",
+    "w": "W",
+    "d": "D",
+    "l": "L",
+    "gf": "GF",
+    "ga": "GA",
+    "gd": "GD",
+    "pts": "PTS",
+    "form": "Form",
+    "championsLeague": "Champions League",
+    "europaLeague": "Europa League",
+    "relegation": "Relegation"
+  },
+  "teamPage": {
+    "loading": "Loading team data...",
+    "notFound": "Team not found",
+    "backToStandings": "Back to Standings",
+    "position": "Position",
+    "points": "Points",
+    "played": "Played",
+    "won": "Won",
+    "drawn": "Drawn",
+    "lost": "Lost",
+    "gd": "GD",
+    "manager": "Manager",
+    "squad": "Squad",
+    "matches": "Matches"
+  },
+  "stats": {
+    "title": "Player Statistics",
+    "loading": "Loading stats...",
+    "topScorers": "Top Scorers",
+    "topAssists": "Top Assists",
+    "player": "Player",
+    "goals": "Goals",
+    "assists": "Assists",
+    "apps": "Apps",
+    "mins": "Mins"
+  },
+  "injuries": {
+    "title": "Injury Report",
+    "loading": "Loading injuries...",
+    "filterByTeam": "Filter by team:",
+    "allTeams": "All Teams ({{count}} players)",
+    "noData": "No injury data available",
+    "severe": "Severe",
+    "moderate": "Moderate",
+    "minor": "Minor",
+    "recovery": {
+      "severe": "Est. recovery: 2-6 months",
+      "moderate": "Est. recovery: 3-6 weeks",
+      "minor": "Est. recovery: 1-2 weeks"
+    },
+    "returnDate": "Est. return: {{date}}",
+    "returnUnknown": "Return date unknown"
+  },
+  "transfers": {
+    "title": "Transfer News",
+    "loading": "Loading transfers... (this may take a moment)",
+    "direction": "Direction:",
+    "all": "All",
+    "incoming": "Incoming",
+    "outgoing": "Outgoing",
+    "team": "Team:",
+    "allTeams": "All Teams",
+    "januaryWindow": "January 2026 Window",
+    "summerWindow": "Summer 2025 Window",
+    "other": "Other",
+    "noData": "No transfer data available",
+    "in": "IN",
+    "out": "OUT"
+  },
+  "about": {
+    "title": "About",
+    "siteTitle": "The Overview of Premier League",
+    "description": "Premier League 2025-26 season overview dashboard. Real-time standings, squad information, player conditions, match fixtures, player statistics, and stadium weather data.",
+    "dataSources": "Data Sources",
+    "apiFootball": "API-Football",
+    "apiFootballDesc": "Standings, fixtures, squads, injuries, player stats",
+    "openWeatherMap": "OpenWeatherMap",
+    "openWeatherMapDesc": "Stadium weather conditions",
+    "seasonInfo": "Season Info",
+    "season34th": "The 2025-26 Premier League is the 34th season of the competition",
+    "promoted": "Promoted clubs: Leeds United, Burnley, Sunderland",
+    "relegated": "Relegated from 2024-25: Leicester City, Ipswich Town, Southampton",
+    "keyStorylines": "Key Storylines",
+    "story1": "Arsenal leading the title race with 56 points",
+    "story2": "Mid-season managerial changes at Man United (Michael Carrick), Chelsea (Liam Rosenior)",
+    "story3": "Liverpool struggling under Arne Slot in defense of their title",
+    "story4": "Everton's new Hill Dickinson Stadium (52,769 capacity)",
+    "story5": "Sunderland's impressive return to the top flight (9th place)",
+    "story6": "Wolves at the bottom with historic low points"
+  },
+  "squad": {
+    "unavailable": "Squad data unavailable",
+    "goalkeepers": "Goalkeepers",
+    "defenders": "Defenders",
+    "midfielders": "Midfielders",
+    "attackers": "Attackers",
+    "age": "Age: {{age}}",
+    "fit": "Fit",
+    "injured": "Injured"
+  },
+  "match": {
+    "noFixtures": "No fixtures available",
+    "timezone": "Timezone:",
+    "recentResults": "Recent Results",
+    "upcomingFixtures": "Upcoming Fixtures",
+    "vs": "vs",
+    "goals": "Goals",
+    "assist": "Assist",
+    "lineups": "Lineups"
+  },
+  "staff": {
+    "loading": "Loading staff...",
+    "unavailable": "Staff data unavailable",
+    "manager": "Manager",
+    "age": "Age: {{age}}",
+    "since": "Since: {{date}}"
+  },
+  "weather": {
+    "humidity": "Humidity {{value}}%",
+    "wind": "Wind {{speed}}m/s"
+  },
+  "teamCard": {
+    "pts": "PTS",
+    "gd": "GD:"
+  }
+}

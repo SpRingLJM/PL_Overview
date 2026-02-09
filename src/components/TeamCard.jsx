@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './TeamCard.css';
 
 export default function TeamCard({ team }) {
+  const { t } = useTranslation();
   const { rank, team: teamInfo, points, all, goalsDiff, form } = team;
 
   const getFormDots = (formStr) => {
@@ -21,12 +23,12 @@ export default function TeamCard({ team }) {
       <div className="team-card-stats">
         <div className="team-card-points">
           <span className="pts-value">{points}</span>
-          <span className="pts-label">PTS</span>
+          <span className="pts-label">{t('teamCard.pts')}</span>
         </div>
         <div className="team-card-record">
           <span>{all.win}W {all.draw}D {all.lose}L</span>
           <span className={goalsDiff > 0 ? 'positive' : goalsDiff < 0 ? 'negative' : ''}>
-            GD: {goalsDiff > 0 ? '+' : ''}{goalsDiff}
+            {t('teamCard.gd')} {goalsDiff > 0 ? '+' : ''}{goalsDiff}
           </span>
         </div>
       </div>

@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getStandings, getTransfers } from '../services/api';
 import './TransfersPage.css';
 
+const eplSearchUrl = (name) =>
+  `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
+
 export default function TransfersPage() {
+  const { t } = useTranslation();
   const [transfers, setTransfers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -56,13 +61,13 @@ export default function TransfersPage() {
     return (
       <div className="loading">
         <div className="spinner" />
-        <span>Loading transfers... (this may take a moment)</span>
+        <span>{t('transfers.loading')}</span>
       </div>
     );
   }
 
   if (error) {
-    return <div className="error">Error: {error}</div>;
+    return <div className="error">{t('common.error', { message: error })}</div>;
   }
 
   // Get unique PL teams
@@ -85,30 +90,37 @@ export default function TransfersPage() {
   });
   const other = filtered.filter((t) => !summer.includes(t) && !winter.includes(t));
 
-  const renderTransfer = (t, i) => (
-    <div key={`${t.player.id}-${t.date}-${i}`} className="transfer-row">
+  const renderTransfer = (tr, i) => (
+    <div key={`${tr.player.id}-${tr.date}-${i}`} className="transfer-row">
       <span className="transfer-date">
-        {new Date(t.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+        {new Date(tr.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
       </span>
-      <span className="transfer-player">{t.player.name}</span>
+      <a
+        href={eplSearchUrl(tr.player.name)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="transfer-player transfer-link"
+      >
+        {tr.player.name}
+      </a>
       <div className="transfer-clubs">
-        <Link to={`/team/${t.from.id}`} className="transfer-club">
-          <img src={t.from.logo} alt={t.from.name} className="transfer-club-logo" />
-          <span>{t.from.name}</span>
+        <Link to={`/team/${tr.from.id}`} className="transfer-club">
+          <img src={tr.from.logo} alt={tr.from.name} className="transfer-club-logo" />
+          <span>{tr.from.name}</span>
         </Link>
-        <span className={`transfer-arrow ${t.direction}`}>
-          {t.direction === 'in' ? '→' : '←'}
+        <span className={`transfer-arrow ${tr.direction}`}>
+          {tr.direction === 'in' ? '→' : '←'}
         </span>
-        <Link to={`/team/${t.to.id}`} className="transfer-club">
-          <img src={t.to.logo} alt={t.to.name} className="transfer-club-logo" />
-          <span>{t.to.name}</span>
+        <Link to={`/team/${tr.to.id}`} className="transfer-club">
+          <img src={tr.to.logo} alt={tr.to.name} className="transfer-club-logo" />
+          <span>{tr.to.name}</span>
         </Link>
       </div>
-      <span className={`transfer-badge ${t.direction}`}>
-        {t.direction === 'in' ? 'IN' : 'OUT'}
+      <span className={`transfer-badge ${tr.direction}`}>
+        {tr.direction === 'in' ? t('transfers.in') : t('transfers.out')}
       </span>
-      {t.type && t.type !== 'N/A' && (
-        <span className="transfer-type">{t.type}</span>
+      {tr.type && tr.type !== 'N/A' && (
+        <span className="transfer-type">{tr.type}</span>
       )}
     </div>
   );
@@ -127,16 +139,16 @@ export default function TransfersPage() {
 
   return (
     <div className="transfers-page">
-      <h2 className="section-title">Transfer News</h2>
+      <h2 className="section-title">{t('transfers.title')}</h2>
 
       <div className="transfer-filters">
         <div className="transfer-filter-group">
-          <label className="filter-label">Direction:</label>
+          <label className="filter-label">{t('transfers.direction')}</label>
           <div className="filter-buttons">
             {[
-              { val: 'all', label: 'All' },
-              { val: 'in', label: 'Incoming' },
-              { val: 'out', label: 'Outgoing' },
+              { val: 'all', label: t('transfers.all') },
+              { val: 'in', label: t('transfers.incoming') },
+              { val: 'out', label: t('transfers.outgoing') },
             ].map((f) => (
               <button
                 key={f.val}
@@ -149,26 +161,26 @@ export default function TransfersPage() {
           </div>
         </div>
         <div className="transfer-filter-group">
-          <label className="filter-label">Team:</label>
+          <label className="filter-label">{t('transfers.team')}</label>
           <select
             value={filterTeam}
             onChange={(e) => setFilterTeam(e.target.value)}
             className="filter-select"
           >
-            <option value="all">All Teams</option>
-            {plTeams.map((t) => (
-              <option key={t.id} value={t.id}>{t.name}</option>
+            <option value="all">{t('transfers.allTeams')}</option>
+            {plTeams.map((tm) => (
+              <option key={tm.id} value={tm.id}>{tm.name}</option>
             ))}
           </select>
         </div>
       </div>
 
-      {renderSection('January 2026 Window', winter)}
-      {renderSection('Summer 2025 Window', summer)}
-      {other.length > 0 && renderSection('Other', other)}
+      {renderSection(t('transfers.januaryWindow'), winter)}
+      {renderSection(t('transfers.summerWindow'), summer)}
+      {other.length > 0 && renderSection(t('transfers.other'), other)}
 
       {filtered.length === 0 && (
-        <p className="no-data">No transfer data available</p>
+        <p className="no-data">{t('transfers.noData')}</p>
       )}
     </div>
   );

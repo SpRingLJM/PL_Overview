@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getCoaches } from '../services/api';
 import './StaffInfo.css';
 
 export default function StaffInfo({ teamId }) {
+  const { t } = useTranslation();
   const [coaches, setCoaches] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -24,13 +26,13 @@ export default function StaffInfo({ teamId }) {
     return (
       <div className="loading">
         <div className="spinner" />
-        <span>Loading staff...</span>
+        <span>{t('staff.loading')}</span>
       </div>
     );
   }
 
   if (coaches.length === 0) {
-    return <p className="no-data">Staff data unavailable</p>;
+    return <p className="no-data">{t('staff.unavailable')}</p>;
   }
 
   return (
@@ -47,12 +49,12 @@ export default function StaffInfo({ teamId }) {
             <div className="staff-details">
               <h4 className="staff-name">{coach.firstname} {coach.lastname}</h4>
               <div className="staff-meta">
-                <span className="staff-role">Manager</span>
+                <span className="staff-role">{t('staff.manager')}</span>
                 <span className="staff-nationality">{coach.nationality}</span>
               </div>
               <div className="staff-meta">
-                {coach.age && <span>Age: {coach.age}</span>}
-                {startDate && <span>Since: {startDate}</span>}
+                {coach.age && <span>{t('staff.age', { age: coach.age })}</span>}
+                {startDate && <span>{t('staff.since', { date: startDate })}</span>}
               </div>
             </div>
           </div>

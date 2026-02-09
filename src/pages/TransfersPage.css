@@ -90,6 +90,17 @@
   min-width: 150px;
 }
 
+.transfer-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.transfer-link:hover {
+  color: var(--pl-cyan);
+  text-decoration: underline;
+}
+
 .transfer-clubs {
   flex: 1;
   display: flex;

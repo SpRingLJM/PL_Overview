@@ -104,6 +104,23 @@
   height: 14px;
 }
 
+.stat-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.stat-link:hover {
+  color: var(--pl-cyan);
+  text-decoration: underline;
+}
+
+.stat-nationality {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  display: block;
+}
+
 .stat-value {
   font-weight: 800;
   font-size: var(--font-size-lg);

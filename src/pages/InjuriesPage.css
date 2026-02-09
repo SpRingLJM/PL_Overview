@@ -4,6 +4,36 @@
   gap: var(--space-lg);
 }
 
+/* Legend */
+.injury-legend {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.legend-chip {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.legend-chip.severe {
+  background: rgba(255, 40, 130, 0.15);
+  color: #FF2882;
+}
+
+.legend-chip.moderate {
+  background: rgba(255, 107, 53, 0.15);
+  color: #FF6B35;
+}
+
+.legend-chip.minor {
+  background: rgba(255, 215, 0, 0.15);
+  color: #FFD700;
+}
+
 /* Filter */
 .injury-filter {
   display: flex;
@@ -107,8 +137,19 @@
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--pl-magenta);
   flex-shrink: 0;
+}
+
+.photo-severe {
+  border: 2px solid #FF2882;
+}
+
+.photo-moderate {
+  border: 2px solid #FF6B35;
+}
+
+.photo-minor {
+  border: 2px solid #FFD700;
 }
 
 .injury-player-info {
@@ -122,27 +163,61 @@
   font-weight: 500;
 }
 
-.injury-reason {
-  font-size: var(--font-size-xs);
-  color: var(--pl-magenta);
+.injury-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.injury-type-badge {
+.injury-link:hover {
+  color: var(--pl-cyan);
+  text-decoration: underline;
+}
+
+.injury-reason {
+  font-size: var(--font-size-xs);
+}
+
+.reason-severe {
+  color: #FF2882;
+}
+
+.reason-moderate {
+  color: #FF6B35;
+}
+
+.reason-minor {
+  color: #FFD700;
+}
+
+.injury-recovery {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.injury-severity-badge {
   font-size: 10px;
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 4px;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
-.injury-type-badge.missing {
+.injury-severity-badge.severe {
   background: rgba(255, 40, 130, 0.15);
-  color: var(--pl-magenta);
+  color: #FF2882;
 }
 
-.injury-type-badge.questionable {
+.injury-severity-badge.moderate {
+  background: rgba(255, 107, 53, 0.15);
+  color: #FF6B35;
+}
+
+.injury-severity-badge.minor {
   background: rgba(255, 215, 0, 0.15);
-  color: var(--status-doubtful);
+  color: #FFD700;
 }
 
 @media (max-width: 768px) {

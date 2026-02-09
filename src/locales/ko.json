@@ -1,0 +1,158 @@
+{
+  "header": {
+    "titlePre": "",
+    "titleHighlight": "프리미어리그 개요"
+  },
+  "nav": {
+    "standings": "순위표",
+    "stats": "통계",
+    "injuries": "부상",
+    "transfers": "이적",
+    "about": "소개"
+  },
+  "footer": "프리미어리그 개요 \u00a9 2026 | 데이터 제공: API-Football & OpenWeatherMap",
+  "common": {
+    "loading": "로딩 중...",
+    "error": "오류: {{message}}",
+    "noData": "데이터 없음"
+  },
+  "home": {
+    "title": "프리미어리그 순위표",
+    "loading": "순위 로딩 중...",
+    "table": "테이블",
+    "cards": "카드",
+    "serverTime": "서버 시간",
+    "upcomingMatches": "예정 경기"
+  },
+  "standings": {
+    "pos": "#",
+    "team": "팀",
+    "mp": "경기",
+    "w": "승",
+    "d": "무",
+    "l": "패",
+    "gf": "득점",
+    "ga": "실점",
+    "gd": "득실차",
+    "pts": "승점",
+    "form": "최근 폼",
+    "championsLeague": "챔피언스리그",
+    "europaLeague": "유로파리그",
+    "relegation": "강등"
+  },
+  "teamPage": {
+    "loading": "팀 데이터 로딩 중...",
+    "notFound": "팀을 찾을 수 없습니다",
+    "backToStandings": "순위표로 돌아가기",
+    "position": "순위",
+    "points": "승점",
+    "played": "경기",
+    "won": "승",
+    "drawn": "무",
+    "lost": "패",
+    "gd": "득실차",
+    "manager": "감독",
+    "squad": "스쿼드",
+    "matches": "경기일정"
+  },
+  "stats": {
+    "title": "선수 통계",
+    "loading": "통계 로딩 중...",
+    "topScorers": "득점 순위",
+    "topAssists": "도움 순위",
+    "player": "선수",
+    "goals": "골",
+    "assists": "도움",
+    "apps": "출전",
+    "mins": "시간"
+  },
+  "injuries": {
+    "title": "부상 리포트",
+    "loading": "부상 정보 로딩 중...",
+    "filterByTeam": "팀별 필터:",
+    "allTeams": "전체 팀 ({{count}}명)",
+    "noData": "부상 데이터 없음",
+    "severe": "심각",
+    "moderate": "중간",
+    "minor": "경미",
+    "recovery": {
+      "severe": "예상 복귀: 2-6개월",
+      "moderate": "예상 복귀: 3-6주",
+      "minor": "예상 복귀: 1-2주"
+    },
+    "returnDate": "복귀 예정: {{date}}",
+    "returnUnknown": "복귀일 미정"
+  },
+  "transfers": {
+    "title": "이적 뉴스",
+    "loading": "이적 정보 로딩 중... (시간이 걸릴 수 있습니다)",
+    "direction": "방향:",
+    "all": "전체",
+    "incoming": "영입",
+    "outgoing": "방출",
+    "team": "팀:",
+    "allTeams": "전체 팀",
+    "januaryWindow": "2026년 1월 이적시장",
+    "summerWindow": "2025년 여름 이적시장",
+    "other": "기타",
+    "noData": "이적 데이터 없음",
+    "in": "영입",
+    "out": "방출"
+  },
+  "about": {
+    "title": "소개",
+    "siteTitle": "프리미어리그 개요",
+    "description": "프리미어리그 2025-26 시즌 개요 대시보드. 실시간 순위, 스쿼드 정보, 선수 컨디션, 경기 일정, 선수 통계, 경기장 날씨 데이터를 제공합니다.",
+    "dataSources": "데이터 출처",
+    "apiFootball": "API-Football",
+    "apiFootballDesc": "순위, 일정, 스쿼드, 부상, 선수 통계",
+    "openWeatherMap": "OpenWeatherMap",
+    "openWeatherMapDesc": "경기장 날씨 정보",
+    "seasonInfo": "시즌 정보",
+    "season34th": "2025-26 프리미어리그는 34번째 시즌입니다",
+    "promoted": "승격 팀: 리즈 유나이티드, 번리, 선더랜드",
+    "relegated": "2024-25 강등 팀: 레스터 시티, 입스위치 타운, 사우샘프턴",
+    "keyStorylines": "주요 스토리",
+    "story1": "아스널이 56포인트로 우승 경쟁 선두",
+    "story2": "맨유(마이클 캐릭), 첼시(리암 로센이어) 시즌 중 감독 교체",
+    "story3": "아르네 슬롯 감독하에 고전하는 리버풀",
+    "story4": "에버턴의 새 힐 디킨슨 스타디움 (52,769석)",
+    "story5": "선더랜드의 인상적인 1부 리그 복귀 (9위)",
+    "story6": "울버햄튼, 역대 최저 승점으로 최하위"
+  },
+  "squad": {
+    "unavailable": "스쿼드 데이터 없음",
+    "goalkeepers": "골키퍼",
+    "defenders": "수비수",
+    "midfielders": "미드필더",
+    "attackers": "공격수",
+    "age": "나이: {{age}}",
+    "fit": "정상",
+    "injured": "부상"
+  },
+  "match": {
+    "noFixtures": "일정 데이터 없음",
+    "timezone": "시간대:",
+    "recentResults": "최근 결과",
+    "upcomingFixtures": "예정 경기",
+    "vs": "vs",
+    "goals": "골",
+    "assist": "어시스트",
+    "lineups": "라인업"
+  },
+  "staff": {
+    "loading": "스태프 로딩 중...",
+    "unavailable": "스태프 데이터 없음",
+    "manager": "감독",
+    "age": "나이: {{age}}",
+    "since": "부임: {{date}}"
+  },
+  "weather": {
+    "humidity": "습도 {{value}}%",
+    "wind": "바람 {{speed}}m/s"
+  },
+  "teamCard": {
+    "pts": "승점",
+    "gd": "득실차:"
+  }
+}

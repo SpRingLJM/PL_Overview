@@ -1,0 +1,158 @@
+{
+  "header": {
+    "titlePre": "Resumen de la",
+    "titleHighlight": "Premier League"
+  },
+  "nav": {
+    "standings": "Clasificaci\u00f3n",
+    "stats": "Estad\u00edsticas",
+    "injuries": "Lesiones",
+    "transfers": "Fichajes",
+    "about": "Acerca de"
+  },
+  "footer": "Resumen de la Premier League \u00a9 2026 | Datos de API-Football y OpenWeatherMap",
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error: {{message}}",
+    "noData": "Sin datos"
+  },
+  "home": {
+    "title": "Clasificaci\u00f3n de la Premier League",
+    "loading": "Cargando clasificaci\u00f3n...",
+    "table": "Tabla",
+    "cards": "Tarjetas",
+    "serverTime": "Hora del Servidor",
+    "upcomingMatches": "Próximos Partidos"
+  },
+  "standings": {
+    "pos": "#",
+    "team": "Equipo",
+    "mp": "PJ",
+    "w": "G",
+    "d": "E",
+    "l": "P",
+    "gf": "GF",
+    "ga": "GC",
+    "gd": "DG",
+    "pts": "PTS",
+    "form": "Forma",
+    "championsLeague": "Champions League",
+    "europaLeague": "Europa League",
+    "relegation": "Descenso"
+  },
+  "teamPage": {
+    "loading": "Cargando datos del equipo...",
+    "notFound": "Equipo no encontrado",
+    "backToStandings": "Volver a clasificaci\u00f3n",
+    "position": "Posici\u00f3n",
+    "points": "Puntos",
+    "played": "Jugados",
+    "won": "Ganados",
+    "drawn": "Empatados",
+    "lost": "Perdidos",
+    "gd": "DG",
+    "manager": "Entrenador",
+    "squad": "Plantilla",
+    "matches": "Partidos"
+  },
+  "stats": {
+    "title": "Estad\u00edsticas de Jugadores",
+    "loading": "Cargando estad\u00edsticas...",
+    "topScorers": "Goleadores",
+    "topAssists": "Asistencias",
+    "player": "Jugador",
+    "goals": "Goles",
+    "assists": "Asistencias",
+    "apps": "PJ",
+    "mins": "Min"
+  },
+  "injuries": {
+    "title": "Informe de Lesiones",
+    "loading": "Cargando lesiones...",
+    "filterByTeam": "Filtrar por equipo:",
+    "allTeams": "Todos los equipos ({{count}} jugadores)",
+    "noData": "Sin datos de lesiones",
+    "severe": "Grave",
+    "moderate": "Moderada",
+    "minor": "Leve",
+    "recovery": {
+      "severe": "Recuperación est.: 2-6 meses",
+      "moderate": "Recuperación est.: 3-6 semanas",
+      "minor": "Recuperación est.: 1-2 semanas"
+    },
+    "returnDate": "Regreso est.: {{date}}",
+    "returnUnknown": "Fecha de regreso desconocida"
+  },
+  "transfers": {
+    "title": "Noticias de Fichajes",
+    "loading": "Cargando fichajes... (puede tardar un momento)",
+    "direction": "Direcci\u00f3n:",
+    "all": "Todos",
+    "incoming": "Llegadas",
+    "outgoing": "Salidas",
+    "team": "Equipo:",
+    "allTeams": "Todos los equipos",
+    "januaryWindow": "Mercado de Enero 2026",
+    "summerWindow": "Mercado de Verano 2025",
+    "other": "Otros",
+    "noData": "Sin datos de fichajes",
+    "in": "ENTRA",
+    "out": "SALE"
+  },
+  "about": {
+    "title": "Acerca de",
+    "siteTitle": "Resumen de la Premier League",
+    "description": "Panel de la temporada 2025-26 de la Premier League. Clasificaci\u00f3n en tiempo real, informaci\u00f3n de plantillas, estado de jugadores, calendario, estad\u00edsticas y clima del estadio.",
+    "dataSources": "Fuentes de Datos",
+    "apiFootball": "API-Football",
+    "apiFootballDesc": "Clasificaci\u00f3n, calendario, plantillas, lesiones, estad\u00edsticas",
+    "openWeatherMap": "OpenWeatherMap",
+    "openWeatherMapDesc": "Condiciones clim\u00e1ticas del estadio",
+    "seasonInfo": "Info de Temporada",
+    "season34th": "La Premier League 2025-26 es la 34\u00aa temporada de la competici\u00f3n",
+    "promoted": "Equipos ascendidos: Leeds United, Burnley, Sunderland",
+    "relegated": "Descendidos en 2024-25: Leicester City, Ipswich Town, Southampton",
+    "keyStorylines": "Historias Clave",
+    "story1": "Arsenal lidera la carrera por el t\u00edtulo con 56 puntos",
+    "story2": "Cambios de entrenador a mitad de temporada en Man United (Michael Carrick), Chelsea (Liam Rosenior)",
+    "story3": "Liverpool luchando bajo Arne Slot en defensa de su t\u00edtulo",
+    "story4": "Nuevo estadio Hill Dickinson del Everton (52,769 asientos)",
+    "story5": "Impresionante regreso del Sunderland a la \u00e9lite (9\u00ba lugar)",
+    "story6": "Wolves en el fondo con puntos hist\u00f3ricamente bajos"
+  },
+  "squad": {
+    "unavailable": "Plantilla no disponible",
+    "goalkeepers": "Porteros",
+    "defenders": "Defensas",
+    "midfielders": "Centrocampistas",
+    "attackers": "Delanteros",
+    "age": "Edad: {{age}}",
+    "fit": "Apto",
+    "injured": "Lesionado"
+  },
+  "match": {
+    "noFixtures": "Sin partidos disponibles",
+    "timezone": "Zona horaria:",
+    "recentResults": "Resultados Recientes",
+    "upcomingFixtures": "Pr\u00f3ximos Partidos",
+    "vs": "vs",
+    "goals": "Goles",
+    "assist": "Asistencia",
+    "lineups": "Alineaciones"
+  },
+  "staff": {
+    "loading": "Cargando personal...",
+    "unavailable": "Datos de personal no disponibles",
+    "manager": "Entrenador",
+    "age": "Edad: {{age}}",
+    "since": "Desde: {{date}}"
+  },
+  "weather": {
+    "humidity": "Humedad {{value}}%",
+    "wind": "Viento {{speed}}m/s"
+  },
+  "teamCard": {
+    "pts": "PTS",
+    "gd": "DG:"
+  }
+}

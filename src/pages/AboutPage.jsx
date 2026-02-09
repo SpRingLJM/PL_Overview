@@ -1,38 +1,37 @@
+import { useTranslation } from 'react-i18next';
 import './AboutPage.css';
 
 export default function AboutPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="about-page">
-      <h2 className="section-title">About</h2>
+      <h2 className="section-title">{t('about.title')}</h2>
       <div className="card about-content">
-        <h3>The Overview of Premier League</h3>
-        <p>
-          Premier League 2025-26 season overview dashboard. Real-time standings,
-          squad information, player conditions, match fixtures, player statistics,
-          and stadium weather data.
-        </p>
+        <h3>{t('about.siteTitle')}</h3>
+        <p>{t('about.description')}</p>
 
-        <h4>Data Sources</h4>
+        <h4>{t('about.dataSources')}</h4>
         <ul>
-          <li><strong>API-Football</strong> - Standings, fixtures, squads, injuries, player stats</li>
-          <li><strong>OpenWeatherMap</strong> - Stadium weather conditions</li>
+          <li><strong>{t('about.apiFootball')}</strong> - {t('about.apiFootballDesc')}</li>
+          <li><strong>{t('about.openWeatherMap')}</strong> - {t('about.openWeatherMapDesc')}</li>
         </ul>
 
-        <h4>Season Info</h4>
+        <h4>{t('about.seasonInfo')}</h4>
         <ul>
-          <li>The 2025-26 Premier League is the 34th season of the competition</li>
-          <li>Promoted clubs: Leeds United, Burnley, Sunderland</li>
-          <li>Relegated from 2024-25: Leicester City, Ipswich Town, Southampton</li>
+          <li>{t('about.season34th')}</li>
+          <li>{t('about.promoted')}</li>
+          <li>{t('about.relegated')}</li>
         </ul>
 
-        <h4>Key Storylines</h4>
+        <h4>{t('about.keyStorylines')}</h4>
         <ul>
-          <li>Arsenal leading the title race with 56 points</li>
-          <li>Mid-season managerial changes at Man United (Michael Carrick), Chelsea (Liam Rosenior)</li>
-          <li>Liverpool struggling under Arne Slot in defense of their title</li>
-          <li>Everton's new Hill Dickinson Stadium (52,769 capacity)</li>
-          <li>Sunderland's impressive return to the top flight (9th place)</li>
-          <li>Wolves at the bottom with historic low points</li>
+          <li>{t('about.story1')}</li>
+          <li>{t('about.story2')}</li>
+          <li>{t('about.story3')}</li>
+          <li>{t('about.story4')}</li>
+          <li>{t('about.story5')}</li>
+          <li>{t('about.story6')}</li>
         </ul>
       </div>
     </div>

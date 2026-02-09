@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://springljm.github.io/PL_Overview/sitemap.xml

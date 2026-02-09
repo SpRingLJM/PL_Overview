@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { getStandings, getTeamSquad, getFixtures, getInjuries } from '../services/api';
 import SquadList from '../components/SquadList';
 import MatchList from '../components/MatchList';
@@ -10,6 +11,7 @@ import { IoArrowBack } from 'react-icons/io5';
 import './TeamPage.css';
 
 export default function TeamPage() {
+  const { t } = useTranslation();
   const { teamId } = useParams();
   const id = Number(teamId);
 
@@ -52,17 +54,17 @@ export default function TeamPage() {
     return (
       <div className="loading">
         <div className="spinner" />
-        <span>Loading team data...</span>
+        <span>{t('teamPage.loading')}</span>
       </div>
     );
   }
 
   if (error) {
-    return <div className="error">Error: {error}</div>;
+    return <div className="error">{t('common.error', { message: error })}</div>;
   }
 
   if (!teamStanding) {
-    return <div className="error">Team not found</div>;
+    return <div className="error">{t('teamPage.notFound')}</div>;
   }
 
   const stadium = stadiums[id];
@@ -71,7 +73,7 @@ export default function TeamPage() {
   return (
     <div className="team-page">
       <Link to="/" className="back-link">
-        <IoArrowBack /> Back to Standings
+        <IoArrowBack /> {t('teamPage.backToStandings')}
       </Link>
 
       <div className="team-hero">
@@ -86,31 +88,31 @@ export default function TeamPage() {
           <div className="team-hero-stats">
             <div className="hero-stat">
               <span className="hero-stat-value">{rank}</span>
-              <span className="hero-stat-label">Position</span>
+              <span className="hero-stat-label">{t('teamPage.position')}</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value highlight">{points}</span>
-              <span className="hero-stat-label">Points</span>
+              <span className="hero-stat-label">{t('teamPage.points')}</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">{all.played}</span>
-              <span className="hero-stat-label">Played</span>
+              <span className="hero-stat-label">{t('teamPage.played')}</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">{all.win}</span>
-              <span className="hero-stat-label">Won</span>
+              <span className="hero-stat-label">{t('teamPage.won')}</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">{all.draw}</span>
-              <span className="hero-stat-label">Drawn</span>
+              <span className="hero-stat-label">{t('teamPage.drawn')}</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">{all.lose}</span>
-              <span className="hero-stat-label">Lost</span>
+              <span className="hero-stat-label">{t('teamPage.lost')}</span>
             </div>
             <div className="hero-stat">
               <span className="hero-stat-value">{goalsDiff > 0 ? '+' : ''}{goalsDiff}</span>
-              <span className="hero-stat-label">GD</span>
+              <span className="hero-stat-label">{t('teamPage.gd')}</span>
             </div>
           </div>
           <div className="team-form-row">
@@ -130,19 +132,19 @@ export default function TeamPage() {
           className={activeTab === 'staff' ? 'active' : ''}
           onClick={() => setActiveTab('staff')}
         >
-          Manager
+          {t('teamPage.manager')}
         </button>
         <button
           className={activeTab === 'squad' ? 'active' : ''}
           onClick={() => setActiveTab('squad')}
         >
-          Squad
+          {t('teamPage.squad')}
         </button>
         <button
           className={activeTab === 'matches' ? 'active' : ''}
           onClick={() => setActiveTab('matches')}
         >
-          Matches
+          {t('teamPage.matches')}
         </button>
       </div>
 

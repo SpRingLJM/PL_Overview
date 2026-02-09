@@ -49,6 +49,15 @@ export const getLeagueInjuries = () =>
 export const getTransfers = (teamId) =>
   footballApi('transfers', { team: teamId });
 
+export const getLeagueFixtures = () =>
+  footballApi('fixtures', { league: LEAGUE_ID, season: SEASON });
+
+export const getFixtureLineups = (fixtureId) =>
+  footballApi('fixtures/lineups', { fixture: fixtureId });
+
+export const getFixtureEvents = (fixtureId) =>
+  footballApi('fixtures/events', { fixture: fixtureId });
+
 // OpenWeatherMap API
 export const getWeather = async (lat, lon) => {
   const res = await fetch(

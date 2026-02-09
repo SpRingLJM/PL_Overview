@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getTopScorers, getTopAssists } from '../services/api';
 import './StatsPage.css';
 
+const eplSearchUrl = (name) =>
+  `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
+
 export default function StatsPage() {
+  const { t } = useTranslation();
   const [scorers, setScorers] = useState([]);
   const [assists, setAssists] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,13 +29,13 @@ export default function StatsPage() {
     return (
       <div className="loading">
         <div className="spinner" />
-        <span>Loading stats...</span>
+        <span>{t('stats.loading')}</span>
       </div>
     );
   }
 
   if (error) {
-    return <div className="error">Error: {error}</div>;
+    return <div className="error">{t('common.error', { message: error })}</div>;
   }
 
   const renderPlayerRow = (item, index, statKey) => {
@@ -43,11 +48,21 @@ export default function StatsPage() {
         <td className="stat-player">
           <img src={player.photo} alt={player.name} className="stat-photo" />
           <div>
-            <span className="stat-name">{player.name}</span>
+            <a
+              href={eplSearchUrl(player.name)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stat-name stat-link"
+            >
+              {player.name}
+            </a>
             <span className="stat-team">
               <img src={stat.team.logo} alt="" className="stat-team-logo" />
               {stat.team.name}
             </span>
+            {player.nationality && (
+              <span className="stat-nationality">{player.nationality}</span>
+            )}
           </div>
         </td>
         <td className="stat-value">
@@ -64,20 +79,20 @@ export default function StatsPage() {
 
   return (
     <div className="stats-page">
-      <h2 className="section-title">Player Statistics</h2>
+      <h2 className="section-title">{t('stats.title')}</h2>
 
       <div className="stats-tabs">
         <button
           className={activeTab === 'scorers' ? 'active' : ''}
           onClick={() => setActiveTab('scorers')}
         >
-          Top Scorers
+          {t('stats.topScorers')}
         </button>
         <button
           className={activeTab === 'assists' ? 'active' : ''}
           onClick={() => setActiveTab('assists')}
         >
-          Top Assists
+          {t('stats.topAssists')}
         </button>
       </div>
 
@@ -86,10 +101,10 @@ export default function StatsPage() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Player</th>
-              <th>{activeTab === 'scorers' ? 'Goals' : 'Assists'}</th>
-              <th>Apps</th>
-              <th>Mins</th>
+              <th>{t('stats.player')}</th>
+              <th>{activeTab === 'scorers' ? t('stats.goals') : t('stats.assists')}</th>
+              <th>{t('stats.apps')}</th>
+              <th>{t('stats.mins')}</th>
             </tr>
           </thead>
           <tbody>

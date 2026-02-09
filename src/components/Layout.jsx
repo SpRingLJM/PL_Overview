@@ -1,31 +1,36 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './LanguageSelector';
 
 export default function Layout() {
+  const { t } = useTranslation();
+
   return (
     <div className="app">
       <header className="header">
         <div className="header-inner">
           <NavLink to="/" className="header-logo">
             <h1>
-              The Overview of <span>Premier League</span>
+              {t('header.titlePre')} <span>{t('header.titleHighlight')}</span>
             </h1>
           </NavLink>
           <nav className="header-nav">
             <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>
-              Standings
+              {t('nav.standings')}
             </NavLink>
             <NavLink to="/stats" className={({ isActive }) => isActive ? 'active' : ''}>
-              Stats
+              {t('nav.stats')}
             </NavLink>
             <NavLink to="/injuries" className={({ isActive }) => isActive ? 'active' : ''}>
-              Injuries
+              {t('nav.injuries')}
             </NavLink>
             <NavLink to="/transfers" className={({ isActive }) => isActive ? 'active' : ''}>
-              Transfers
+              {t('nav.transfers')}
             </NavLink>
             <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>
-              About
+              {t('nav.about')}
             </NavLink>
+            <LanguageSelector />
           </nav>
         </div>
       </header>
@@ -33,7 +38,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer className="footer">
-        <p>The Overview of Premier League &copy; 2026 | Data provided by API-Football &amp; OpenWeatherMap</p>
+        <p>{t('footer')}</p>
       </footer>
     </div>
   );
