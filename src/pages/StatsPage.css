@@ -1,0 +1,111 @@
+.stats-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.stats-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+  align-self: flex-start;
+}
+
+.stats-tabs button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.stats-tabs button.active {
+  background: var(--pl-purple);
+  color: var(--pl-cyan);
+}
+
+.stats-tabs button:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stats-table th {
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.stats-table th:nth-child(2) {
+  text-align: left;
+}
+
+.stats-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  font-size: var(--font-size-sm);
+}
+
+.stats-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+
+.stat-rank {
+  font-weight: 700;
+  width: 40px;
+}
+
+.stat-player {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: left !important;
+}
+
+.stat-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+}
+
+.stat-name {
+  font-weight: 600;
+  display: block;
+}
+
+.stat-team {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-team-logo {
+  width: 14px;
+  height: 14px;
+}
+
+.stat-value {
+  font-weight: 800;
+  font-size: var(--font-size-lg);
+  color: var(--pl-cyan);
+}

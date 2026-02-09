@@ -1,0 +1,89 @@
+.squad-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.position-header {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--pl-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: var(--space-sm) 0;
+  margin-top: var(--space-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.squad-player {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.squad-player:hover {
+  background: var(--bg-card-hover);
+}
+
+.squad-player.injured {
+  opacity: 0.7;
+}
+
+.player-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.player-number {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.player-age {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.player-status {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.status-fit {
+  background: rgba(0, 255, 135, 0.1);
+  color: var(--status-fit);
+}
+
+.status-injured {
+  background: rgba(255, 40, 130, 0.1);
+  color: var(--status-injured);
+}

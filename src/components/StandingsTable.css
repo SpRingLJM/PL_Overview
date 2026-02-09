@@ -1,0 +1,144 @@
+.standings-wrapper {
+  overflow-x: auto;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.standings-table th {
+  background: var(--bg-secondary);
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.standings-table th.col-team {
+  text-align: left;
+}
+
+.standings-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+}
+
+.standings-table tbody tr:hover {
+  background: var(--bg-card-hover);
+}
+
+.col-pos {
+  width: 40px;
+  font-weight: 700;
+}
+
+.col-team {
+  text-align: left !important;
+  min-width: 180px;
+}
+
+.col-pts {
+  font-weight: 800;
+  color: var(--pl-cyan);
+  font-size: var(--font-size-base);
+}
+
+.team-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.team-link:hover {
+  color: var(--pl-cyan);
+}
+
+.team-logo-sm {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.positive { color: var(--result-win); }
+.negative { color: var(--result-loss); }
+
+/* Zone indicators */
+.zone-ucl td:first-child {
+  border-left: 3px solid var(--pl-cyan);
+}
+.zone-uel td:first-child {
+  border-left: 3px solid #FF6B35;
+}
+.zone-rel td:first-child {
+  border-left: 3px solid var(--pl-magenta);
+}
+
+/* Form dots */
+.col-form {
+  white-space: nowrap;
+}
+
+.form-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  margin: 0 1px;
+  color: white;
+}
+
+.form-w { background: var(--result-win); color: #000; }
+.form-d { background: var(--result-draw); color: #000; }
+.form-l { background: var(--result-loss); }
+
+/* Legend */
+.standings-legend {
+  display: flex;
+  gap: var(--space-lg);
+  margin-top: var(--space-md);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend-dot.ucl { background: var(--pl-cyan); }
+.legend-dot.uel { background: #FF6B35; }
+.legend-dot.rel { background: var(--pl-magenta); }
+
+@media (max-width: 768px) {
+  .standings-table {
+    font-size: var(--font-size-xs);
+  }
+  .standings-table th,
+  .standings-table td {
+    padding: var(--space-xs) var(--space-sm);
+  }
+  .col-form {
+    display: none;
+  }
+}
