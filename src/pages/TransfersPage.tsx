@@ -6,7 +6,7 @@ import type { ProcessedTransfer, Team } from '../types';
 import './TransfersPage.css';
 
 const eplSearchUrl = (name: string) =>
-  `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
+  `https://www.google.com/search?q=${encodeURIComponent(name + ' site:premierleague.com')}`;
 
 export default function TransfersPage() {
   const { t } = useTranslation();

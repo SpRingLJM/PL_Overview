@@ -6,7 +6,7 @@ import type { InjuryEntry, Team } from '../types';
 import './InjuriesPage.css';
 
 const eplSearchUrl = (name: string) =>
-  `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
+  `https://www.google.com/search?q=${encodeURIComponent(name + ' site:premierleague.com')}`;
 
 const SEVERE_KEYWORDS = ['acl', 'cruciate', 'ligament', 'surgery', 'broken', 'fracture', 'rupture', 'tendon'];
 const MODERATE_KEYWORDS = ['muscle', 'hamstring', 'calf', 'ankle', 'groin', 'thigh', 'shoulder', 'back', 'hip', 'foot', 'strain'];

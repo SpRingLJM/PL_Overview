@@ -5,7 +5,7 @@ import type { PlayerStat } from '../types';
 import './StatsPage.css';
 
 const eplSearchUrl = (name: string) =>
-  `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
+  `https://www.google.com/search?q=${encodeURIComponent(name + ' site:premierleague.com')}`;
 
 export default function StatsPage() {
   const { t } = useTranslation();
