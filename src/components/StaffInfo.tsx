@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getCoaches } from '../services/api';
+import type { Coach } from '../types';
 import './StaffInfo.css';
 
-export default function StaffInfo({ teamId }) {
+interface Props {
+  teamId: number;
+}
+
+export default function StaffInfo({ teamId }: Props) {
   const { t } = useTranslation();
-  const [coaches, setCoaches] = useState([]);
+  const [coaches, setCoaches] = useState<Coach[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

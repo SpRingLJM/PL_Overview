@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getFixtureLineups, getFixtureEvents } from '../services/api';
+import type { Fixture, FixtureEvent, FixtureLineup } from '../types';
 import './MatchList.css';
 
 const TIMEZONES = [
@@ -11,22 +12,31 @@ const TIMEZONES = [
   { label: 'ET', iana: 'America/New_York', abbr: 'ET' },
 ];
 
-export default function MatchList({ fixtures }) {
+interface MatchDetail {
+  lineups: FixtureLineup[];
+  events: FixtureEvent[];
+}
+
+interface Props {
+  fixtures: Fixture[];
+}
+
+export default function MatchList({ fixtures }: Props) {
   const { t } = useTranslation();
   const [tz, setTz] = useState(() => {
     const saved = localStorage.getItem('pl-timezone');
     return saved || 'UTC';
   });
-  const [expandedId, setExpandedId] = useState(null);
-  const [matchDetail, setMatchDetail] = useState(null);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [matchDetail, setMatchDetail] = useState<MatchDetail | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
 
-  const handleTzChange = (iana) => {
+  const handleTzChange = (iana: string) => {
     setTz(iana);
     localStorage.setItem('pl-timezone', iana);
   };
 
-  const handleMatchClick = async (match) => {
+  const handleMatchClick = async (match: Fixture) => {
     const fId = match.fixture.id;
     if (match.fixture.status.short !== 'FT') return;
 
@@ -55,25 +65,25 @@ export default function MatchList({ fixtures }) {
   const now = new Date();
   const past = fixtures
     .filter((f) => new Date(f.fixture.date) < now && f.fixture.status.short === 'FT')
-    .sort((a, b) => new Date(b.fixture.date) - new Date(a.fixture.date))
+    .sort((a, b) => new Date(b.fixture.date).getTime() - new Date(a.fixture.date).getTime())
     .slice(0, 10);
 
   const upcoming = fixtures
     .filter((f) => new Date(f.fixture.date) >= now || f.fixture.status.short === 'NS')
-    .sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date))
+    .sort((a, b) => new Date(a.fixture.date).getTime() - new Date(b.fixture.date).getTime())
     .slice(0, 10);
 
-  const formatDate = (dateStr) => {
+  const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: tz });
   };
 
-  const formatTime = (dateStr) => {
+  const formatTime = (dateStr: string) => {
     const d = new Date(dateStr);
     return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: tz, hour12: false });
   };
 
-  const getTzAbbr = (dateStr) => {
+  const getTzAbbr = (dateStr: string) => {
     const d = new Date(dateStr);
     const parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'short' }).formatToParts(d);
     const tzPart = parts.find((p) => p.type === 'timeZoneName');
@@ -159,7 +169,7 @@ export default function MatchList({ fixtures }) {
     );
   };
 
-  const renderMatch = (match, showResult) => {
+  const renderMatch = (match: Fixture, showResult: boolean) => {
     const home = match.teams.home;
     const away = match.teams.away;
     const goals = match.goals;

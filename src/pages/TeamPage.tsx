@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getStandings, getTeamSquad, getFixtures, getInjuries } from '../services/api';
+import type { Standing, Player, Fixture, InjuryEntry } from '../types';
 import SquadList from '../components/SquadList';
 import MatchList from '../components/MatchList';
 import StaffInfo from '../components/StaffInfo';
@@ -15,12 +16,12 @@ export default function TeamPage() {
   const { teamId } = useParams();
   const id = Number(teamId);
 
-  const [teamStanding, setTeamStanding] = useState(null);
-  const [squad, setSquad] = useState([]);
-  const [fixtures, setFixtures] = useState([]);
-  const [injuries, setInjuries] = useState([]);
+  const [teamStanding, setTeamStanding] = useState<Standing | null>(null);
+  const [squad, setSquad] = useState<Player[]>([]);
+  const [fixtures, setFixtures] = useState<Fixture[]>([]);
+  const [injuries, setInjuries] = useState<InjuryEntry[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('squad');
 
   useEffect(() => {

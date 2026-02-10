@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import type { Standing } from '../types';
 import './StandingsTable.css';
 
-export default function StandingsTable({ standings }) {
+interface Props {
+  standings: Standing[];
+}
+
+export default function StandingsTable({ standings }: Props) {
   const { t } = useTranslation();
 
   if (!standings || standings.length === 0) return null;
 
-  const getFormIcon = (char) => {
-    const map = { W: 'form-w', D: 'form-d', L: 'form-l' };
+  const getFormIcon = (char: string) => {
+    const map: Record<string, string> = { W: 'form-w', D: 'form-d', L: 'form-l' };
     return <span className={`form-dot ${map[char] || ''}`} key={Math.random()}>{char}</span>;
   };
 

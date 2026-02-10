@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import type { Standing } from '../types';
 import './TeamCard.css';
 
-export default function TeamCard({ team }) {
+interface Props {
+  team: Standing;
+}
+
+export default function TeamCard({ team }: Props) {
   const { t } = useTranslation();
   const { rank, team: teamInfo, points, all, goalsDiff, form } = team;
 
-  const getFormDots = (formStr) => {
+  const getFormDots = (formStr: string) => {
     if (!formStr) return null;
     return formStr.split('').slice(-5).map((c, i) => (
       <span key={i} className={`card-form-dot ${c === 'W' ? 'w' : c === 'D' ? 'd' : 'l'}`} />

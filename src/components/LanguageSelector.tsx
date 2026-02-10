@@ -10,7 +10,7 @@ const LANGUAGES = [
 export default function LanguageSelector() {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (code) => {
+  const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
     localStorage.setItem('pl-lang', code);
   };

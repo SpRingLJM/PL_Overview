@@ -2,16 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getStandings, getLeagueFixtures } from '../services/api';
+import type { Standing, Fixture } from '../types';
 import StandingsTable from '../components/StandingsTable';
 import TeamCard from '../components/TeamCard';
 import './HomePage.css';
 
 export default function HomePage() {
   const { t } = useTranslation();
-  const [standings, setStandings] = useState([]);
-  const [upcomingFixtures, setUpcomingFixtures] = useState([]);
+  const [standings, setStandings] = useState<Standing[]>([]);
+  const [upcomingFixtures, setUpcomingFixtures] = useState<Fixture[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState('table');
   const [gmtTime, setGmtTime] = useState('');
 
@@ -46,7 +47,7 @@ export default function HomePage() {
           const now = new Date();
           const upcoming = fixturesData
             .filter((f) => new Date(f.fixture.date) > now && f.fixture.status.short === 'NS')
-            .sort((a, b) => new Date(a.fixture.date) - new Date(b.fixture.date))
+            .sort((a, b) => new Date(a.fixture.date).getTime() - new Date(b.fixture.date).getTime())
             .slice(0, 5);
           setUpcomingFixtures(upcoming);
         }

@@ -2,17 +2,18 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getStandings, getTransfers } from '../services/api';
+import type { ProcessedTransfer, Team } from '../types';
 import './TransfersPage.css';
 
-const eplSearchUrl = (name) =>
+const eplSearchUrl = (name: string) =>
   `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
 
 export default function TransfersPage() {
   const { t } = useTranslation();
-  const [transfers, setTransfers] = useState([]);
+  const [transfers, setTransfers] = useState<ProcessedTransfer[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filterType, setFilterType] = useState('all'); // 'all', 'in', 'out'
+  const [error, setError] = useState<string | null>(null);
+  const [filterType, setFilterType] = useState('all');
   const [filterTeam, setFilterTeam] = useState('all');
 
   useEffect(() => {
@@ -23,22 +24,22 @@ export default function TransfersPage() {
         const teamIds = teams.map((t) => t.team);
 
         // Fetch transfers for all teams (batch)
-        const allTransfers = [];
+        const allTransfers: ProcessedTransfer[] = [];
         for (const team of teamIds) {
           try {
             const data = await getTransfers(team.id);
             // Filter to 2025-26 window transfers (after June 2025)
-            data.forEach((entry) => {
-              entry.transfers.forEach((t) => {
-                const transferDate = new Date(t.date);
+            data.forEach((entry: any) => {
+              entry.transfers.forEach((tr: any) => {
+                const transferDate = new Date(tr.date);
                 if (transferDate >= new Date('2025-06-01')) {
-                  const isIncoming = t.teams.in.id === team.id;
+                  const isIncoming = tr.teams.in.id === team.id;
                   allTransfers.push({
                     player: entry.player,
-                    date: t.date,
-                    type: t.type,
-                    from: t.teams.out,
-                    to: t.teams.in,
+                    date: tr.date,
+                    type: tr.type,
+                    from: tr.teams.out,
+                    to: tr.teams.in,
                     direction: isIncoming ? 'in' : 'out',
                     plTeam: team,
                   });
@@ -50,7 +51,7 @@ export default function TransfersPage() {
           }
         }
 
-        allTransfers.sort((a, b) => new Date(b.date) - new Date(a.date));
+        allTransfers.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
         setTransfers(allTransfers);
       })
       .catch((err) => setError(err.message))
@@ -90,7 +91,7 @@ export default function TransfersPage() {
   });
   const other = filtered.filter((t) => !summer.includes(t) && !winter.includes(t));
 
-  const renderTransfer = (tr, i) => (
+  const renderTransfer = (tr: ProcessedTransfer, i: number) => (
     <div key={`${tr.player.id}-${tr.date}-${i}`} className="transfer-row">
       <span className="transfer-date">
         {new Date(tr.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
@@ -125,7 +126,7 @@ export default function TransfersPage() {
     </div>
   );
 
-  const renderSection = (title, items) => {
+  const renderSection = (title: string, items: ProcessedTransfer[]) => {
     if (items.length === 0) return null;
     return (
       <>

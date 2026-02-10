@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getWeather } from '../services/api';
+import type { WeatherResponse } from '../types';
 import { WiDaySunny, WiCloudy, WiRain, WiSnow, WiFog, WiThunderstorm } from 'react-icons/wi';
+import type { IconType } from 'react-icons';
 import './WeatherWidget.css';
 
-const weatherIcons = {
+const weatherIcons: Record<string, IconType> = {
   Clear: WiDaySunny,
   Clouds: WiCloudy,
   Rain: WiRain,
@@ -16,9 +18,15 @@ const weatherIcons = {
   Thunderstorm: WiThunderstorm,
 };
 
-export default function WeatherWidget({ lat, lon, stadiumName }) {
+interface Props {
+  lat: number;
+  lon: number;
+  stadiumName: string;
+}
+
+export default function WeatherWidget({ lat, lon, stadiumName }: Props) {
   const { t } = useTranslation();
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<WeatherResponse | null>(null);
 
   useEffect(() => {
     if (!lat || !lon) return;

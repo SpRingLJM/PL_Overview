@@ -1,5 +1,7 @@
+import type { Stadium } from '../types';
+
 // Stadium coordinates for weather API
-const stadiums = {
+const stadiums: Record<number, Stadium> = {
   40: { name: 'Anfield', lat: 53.4308, lon: -2.9609, capacity: 61276 },
   42: { name: 'Emirates Stadium', lat: 51.5549, lon: -0.1084, capacity: 60704 },
   50: { name: 'Etihad Stadium', lat: 53.4831, lon: -2.2004, capacity: 55097 },
@@ -17,7 +19,7 @@ const stadiums = {
   45: { name: 'Hill Dickinson Stadium', lat: 53.4388, lon: -2.9663, capacity: 52769 },
   48: { name: 'London Stadium', lat: 51.5387, lon: -0.0166, capacity: 62500 },
   39: { name: 'Molineux', lat: 52.5902, lon: -2.1306, capacity: 31750 },
-  // Promoted teams (2025-26) - IDs may differ, mapped below
+  // Promoted teams (2025-26)
   63: { name: 'Elland Road', lat: 53.7778, lon: -1.5722, capacity: 37890 }, // Leeds
   44: { name: 'Turf Moor', lat: 53.7890, lon: -2.2302, capacity: 21944 }, // Burnley
   71: { name: 'Stadium of Light', lat: 54.9146, lon: -1.3882, capacity: 49000 }, // Sunderland

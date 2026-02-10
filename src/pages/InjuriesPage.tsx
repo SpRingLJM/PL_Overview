@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getLeagueInjuries } from '../services/api';
+import type { InjuryEntry, Team } from '../types';
 import './InjuriesPage.css';
 
-const eplSearchUrl = (name) =>
+const eplSearchUrl = (name: string) =>
   `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
 
 const SEVERE_KEYWORDS = ['acl', 'cruciate', 'ligament', 'surgery', 'broken', 'fracture', 'rupture', 'tendon'];
 const MODERATE_KEYWORDS = ['muscle', 'hamstring', 'calf', 'ankle', 'groin', 'thigh', 'shoulder', 'back', 'hip', 'foot', 'strain'];
 
-function getInjurySeverity(reason) {
+function getInjurySeverity(reason: string): 'severe' | 'moderate' | 'minor' {
   if (!reason) return 'minor';
   const lower = reason.toLowerCase();
   if (SEVERE_KEYWORDS.some((k) => lower.includes(k))) return 'severe';
@@ -19,7 +20,7 @@ function getInjurySeverity(reason) {
 }
 
 // Expected return dates from Transfermarkt (updated 2026-02-09)
-const RETURN_DATES = {
+const RETURN_DATES: Record<string, string | null> = {
   'Caleb Wiley': null,
   'Julio Soler': null,
   'Jérémy Doku': null,
@@ -108,15 +109,14 @@ const RETURN_DATES = {
   'Stefanos Tzimas': '2026-09-01',
 };
 
-function getReturnDate(playerName) {
+function getReturnDate(playerName: string): string | null {
   return RETURN_DATES[playerName] || null;
 }
 
-function formatReturnDate(dateStr, lang) {
-  if (!dateStr) return null;
+function formatReturnDate(dateStr: string, lang: string): string {
   const d = new Date(dateStr + 'T00:00:00');
   const now = new Date();
-  const diffDays = Math.ceil((d - now) / (1000 * 60 * 60 * 24));
+  const diffDays = Math.ceil((d.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
   const dateFormatted = d.toLocaleDateString(lang === 'ko' ? 'ko-KR' : lang === 'es' ? 'es-ES' : 'en-GB', {
     day: 'numeric',
@@ -126,7 +126,7 @@ function formatReturnDate(dateStr, lang) {
 
   if (diffDays < 0) return dateFormatted;
   if (diffDays <= 7) {
-    const labels = { en: 'days', ko: '일', es: 'días' };
+    const labels: Record<string, string> = { en: 'days', ko: '일', es: 'días' };
     return `${dateFormatted} (~${diffDays}${labels[lang] || labels.en})`;
   }
   return dateFormatted;
@@ -134,9 +134,9 @@ function formatReturnDate(dateStr, lang) {
 
 export default function InjuriesPage() {
   const { t, i18n } = useTranslation();
-  const [injuries, setInjuries] = useState([]);
+  const [injuries, setInjuries] = useState<InjuryEntry[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [filterTeam, setFilterTeam] = useState('all');
 
   useEffect(() => {
@@ -184,7 +184,7 @@ export default function InjuriesPage() {
     ? injuries
     : injuries.filter((i) => i.team.id === Number(filterTeam));
 
-  const grouped = {};
+  const grouped: Record<number, { team: Team; players: InjuryEntry[] }> = {};
   filtered.forEach((entry) => {
     const tid = entry.team.id;
     if (!grouped[tid]) {

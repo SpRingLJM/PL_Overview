@@ -1,21 +1,27 @@
 import { useTranslation } from 'react-i18next';
+import type { Player, InjuryEntry } from '../types';
 import './SquadList.css';
 
-const positionOrder = { Goalkeeper: 0, Defender: 1, Midfielder: 2, Attacker: 3 };
-const positionKeys = {
+const positionOrder: Record<string, number> = { Goalkeeper: 0, Defender: 1, Midfielder: 2, Attacker: 3 };
+const positionKeys: Record<string, string> = {
   Goalkeeper: 'squad.goalkeepers',
   Defender: 'squad.defenders',
   Midfielder: 'squad.midfielders',
   Attacker: 'squad.attackers',
 };
 
-export default function SquadList({ players, injuries }) {
+interface Props {
+  players: Player[];
+  injuries: InjuryEntry[];
+}
+
+export default function SquadList({ players, injuries }: Props) {
   const { t } = useTranslation();
 
   if (!players || players.length === 0) return <p className="no-data">{t('squad.unavailable')}</p>;
 
   const injuredIds = new Set((injuries || []).map((inj) => inj.player.id));
-  const injuryMap = {};
+  const injuryMap: Record<number, string> = {};
   (injuries || []).forEach((inj) => {
     injuryMap[inj.player.id] = inj.player.reason || t('squad.injured');
   });

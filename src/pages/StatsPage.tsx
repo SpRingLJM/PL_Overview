@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getTopScorers, getTopAssists } from '../services/api';
+import type { PlayerStat } from '../types';
 import './StatsPage.css';
 
-const eplSearchUrl = (name) =>
+const eplSearchUrl = (name: string) =>
   `https://www.premierleague.com/search?query=${encodeURIComponent(name)}`;
 
 export default function StatsPage() {
   const { t } = useTranslation();
-  const [scorers, setScorers] = useState([]);
-  const [assists, setAssists] = useState([]);
+  const [scorers, setScorers] = useState<PlayerStat[]>([]);
+  const [assists, setAssists] = useState<PlayerStat[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('scorers');
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function StatsPage() {
     return <div className="error">{t('common.error', { message: error })}</div>;
   }
 
-  const renderPlayerRow = (item, index, statKey) => {
+  const renderPlayerRow = (item: PlayerStat, index: number, statKey: string) => {
     const player = item.player;
     const stat = item.statistics[0];
 
