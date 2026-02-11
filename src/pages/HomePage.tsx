@@ -7,6 +7,13 @@ import StandingsTable from '../components/StandingsTable';
 import TeamCard from '../components/TeamCard';
 import './HomePage.css';
 
+const TIMEZONES = [
+  { label: 'GMT', iana: 'UTC', suffix: 'GMT' },
+  { label: 'KST', iana: 'Asia/Seoul', suffix: 'KST' },
+  { label: 'PST', iana: 'America/Los_Angeles', suffix: 'PT' },
+  { label: 'ET', iana: 'America/New_York', suffix: 'ET' },
+];
+
 export default function HomePage() {
   const { t } = useTranslation();
   const [standings, setStandings] = useState<Standing[]>([]);
@@ -14,13 +21,23 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState('table');
-  const [gmtTime, setGmtTime] = useState('');
+  const [selectedTz, setSelectedTz] = useState(() =>
+    localStorage.getItem('pl-home-timezone') || 'UTC'
+  );
+  const [clockTime, setClockTime] = useState('');
+
+  const tzInfo = TIMEZONES.find((tz) => tz.iana === selectedTz) || TIMEZONES[0];
+
+  const handleTzChange = (iana: string) => {
+    setSelectedTz(iana);
+    localStorage.setItem('pl-home-timezone', iana);
+  };
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      setGmtTime(now.toLocaleString('en-GB', {
-        timeZone: 'UTC',
+      setClockTime(now.toLocaleString('en-GB', {
+        timeZone: tzInfo.iana,
         weekday: 'short',
         day: 'numeric',
         month: 'short',
@@ -29,12 +46,12 @@ export default function HomePage() {
         minute: '2-digit',
         second: '2-digit',
         hour12: false,
-      }) + ' GMT');
+      }) + ' ' + tzInfo.suffix);
     };
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [tzInfo]);
 
   useEffect(() => {
     setLoading(true);
@@ -73,7 +90,18 @@ export default function HomePage() {
     <div className="home-page">
       <div className="gmt-clock">
         <span className="gmt-label">{t('home.serverTime')}</span>
-        <span className="gmt-value">{gmtTime}</span>
+        <span className="gmt-value">{clockTime}</span>
+        <div className="home-tz-selector">
+          {TIMEZONES.map((tz) => (
+            <button
+              key={tz.iana}
+              className={`home-tz-btn ${selectedTz === tz.iana ? 'active' : ''}`}
+              onClick={() => handleTzChange(tz.iana)}
+            >
+              {tz.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {upcomingFixtures.length > 0 && (
@@ -84,13 +112,13 @@ export default function HomePage() {
               <div key={f.fixture.id} className="upcoming-card card">
                 <span className="upcoming-date">
                   {new Date(f.fixture.date).toLocaleDateString('en-GB', {
-                    timeZone: 'UTC',
+                    timeZone: tzInfo.iana,
                     day: 'numeric',
                     month: 'short',
                   })}
                   {' '}
                   {new Date(f.fixture.date).toLocaleTimeString('en-GB', {
-                    timeZone: 'UTC',
+                    timeZone: tzInfo.iana,
                     hour: '2-digit',
                     minute: '2-digit',
                     hour12: false,

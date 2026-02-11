@@ -28,6 +28,37 @@
   font-variant-numeric: tabular-nums;
 }
 
+.home-tz-selector {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.home-tz-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.home-tz-btn.active {
+  background: var(--pl-purple);
+  color: var(--pl-cyan);
+}
+
+.home-tz-btn:hover:not(.active) {
+  color: var(--text-primary);
+}
+
 .upcoming-section {
   display: flex;
   flex-direction: column;
